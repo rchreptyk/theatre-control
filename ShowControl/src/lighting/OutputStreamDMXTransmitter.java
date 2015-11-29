@@ -42,5 +42,10 @@ public class OutputStreamDMXTransmitter implements DMXFrameTransmitter{
 		formatter.format("\n");
 		formatter.flush();
 	}
+	
+	public void close()
+	{
+		this.formatter.close();
+	}
 
 }

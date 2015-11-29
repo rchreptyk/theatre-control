@@ -9,9 +9,9 @@ class Screens(object):
         super(Screens, self).__init__()
         self.app = QtGui.QApplication(sys.argv)
 
-        self.left = Screen(self.app, 'left')
-        self.right = Screen(self.app, 'right')
-        self.center = Screen(self.app, 'center')
+        self.left = Screen(self.app, 'left', '/Users/russell/Desktop/Workspace/stanely/media/screen_init/left.png')
+        self.right = Screen(self.app, 'right', '/Users/russell/Desktop/Workspace/stanely/media/screen_init/right.png')
+        self.center = Screen(self.app, 'center', '/Users/russell/Desktop/Workspace/stanely/media/screen_init/center.png')
 
     def get_screens(self):
         return {
@@ -21,6 +21,15 @@ class Screens(object):
         }
 
     def start(self):
-        self.app.exec_()
+        try:
+            self.app.exec_()
+        finally:
+            self.stop()
+       
 
+    def stop(self):
+        self.left.close()
+        self.right.close()
+        self.center.close()
+        self.app.quit()
         

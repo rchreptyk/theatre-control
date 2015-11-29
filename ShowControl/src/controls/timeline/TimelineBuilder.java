@@ -1,14 +1,14 @@
 package controls.timeline;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.PriorityQueue;
 
 import controls.Event;
 
 public class TimelineBuilder {
 	
-	private PriorityQueue<TimelineEvent> eventQueue = new PriorityQueue<>();
+	private ArrayList<TimelineEvent> eventList = new ArrayList<>();
 	private HashMap<Event, Duration> eventStartTime = new HashMap<>();
 	
 	/**
@@ -16,21 +16,23 @@ public class TimelineBuilder {
 	 * @param event
 	 * @param time
 	 */
-	public void addEvent(Event event, Duration time)
+	public Event addEvent(Event event, Duration time)
 	{
 		if(eventStartTime.containsKey(event))
 			throw new RuntimeException("Cannot add a duplicate event");
 		
 		eventStartTime.put(event, time);
-		eventQueue.add(new TimelineEvent(event, time));
+		eventList.add(new TimelineEvent(event, time));
+		
+		return event;
 	}
 	
-	public void addEventAfterEvent(Event event, Event afterEvent)
+	public Event addEventAfterEvent(Event event, Event afterEvent)
 	{
-		addEventAfterEvent(event, afterEvent, Duration.ZERO);
+		return addEventAfterEvent(event, afterEvent, Duration.ZERO);
 	}
 	
-	public void addEventAfterEvent(Event event, Event afterEvent, Duration offset)
+	public Event addEventAfterEvent(Event event, Event afterEvent, Duration offset)
 	{
 		Duration startTime = eventStartTime.get(afterEvent);
 		if(startTime == null)
@@ -39,11 +41,11 @@ public class TimelineBuilder {
 		}
 		
 		Duration newStartTime = startTime.plus(afterEvent.getDuration()).plus(offset);
-		this.addEvent(event, newStartTime);
+		return this.addEvent(event, newStartTime);
 	}
 	
 	public Timeline buildTimeline()
 	{
-		return new Timeline(eventQueue);
+		return new Timeline(eventList);
 	}
 }

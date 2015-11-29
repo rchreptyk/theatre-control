@@ -1,5 +1,5 @@
 package lighting;
 
-public interface DMXFrameTransmitter {
+public interface DMXFrameTransmitter extends AutoCloseable {
 	public void send(DMXFrame frame);
 }

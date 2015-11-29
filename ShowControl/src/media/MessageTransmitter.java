@@ -3,7 +3,7 @@ package media;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
-public class MessageTransmitter {
+public class MessageTransmitter implements AutoCloseable {
 	private PrintWriter writer;
 	
 	public MessageTransmitter(OutputStream messageStream)
@@ -15,5 +15,10 @@ public class MessageTransmitter {
 	{
 		writer.println(message.getMessage());
 		writer.flush();
+	}
+
+	@Override
+	public void close(){
+		writer.close();
 	}
 }

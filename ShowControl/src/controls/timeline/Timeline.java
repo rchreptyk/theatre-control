@@ -2,6 +2,7 @@ package controls.timeline;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.logging.Logger;
@@ -20,12 +21,21 @@ public class Timeline implements Runnable {
 	
 	private volatile boolean stopped = false;
 	
-	private PriorityQueue<TimelineEvent> eventQueue;
+	private PriorityQueue<TimelineEvent> eventQueue = new PriorityQueue<>();
 	private List<Event> executedEvents = new ArrayList<Event>();
 	
-	public Timeline(PriorityQueue<TimelineEvent> events)
+	private Duration duration = Duration.ZERO;
+	
+	public Timeline(Collection<TimelineEvent> events)
 	{
-		eventQueue = events;
+		for(TimelineEvent event : events)
+		{
+			eventQueue.add(event);
+			
+			Duration endTime = event.getStartTime().plus(event.getDuration());
+			if(endTime.compareTo(duration) > 0)
+				duration = endTime;
+		}
 	}
 	
 	public void stop()
@@ -43,6 +53,11 @@ public class Timeline implements Runnable {
 	public boolean hasStopped()
 	{
 		return stopped;
+	}
+	
+	public Duration getDuration()
+	{
+		return duration;
 	}
 	
 	@Override

@@ -3,8 +3,6 @@ import vlc
 
 vlc_instance = vlc.Instance()
 
-print(vlc_instance.audio_output_list_get())
-
 class Sound(object):
     """docstring for Sound"""
     def __init__(self, path):
@@ -17,8 +15,9 @@ class Sound(object):
         self.player.set_media(self.media)
         self.player.play()
 
-    def change_volume(volume):
+    def change_volume(self, volume):
         self.player.audio_set_volume(volume)
 
     def stop(self):
         self.player.stop()
+        self.player.release()

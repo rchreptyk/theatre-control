@@ -53,6 +53,12 @@ public class LightingLoop implements Runnable {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		
+		try {
+			this.transmitter.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

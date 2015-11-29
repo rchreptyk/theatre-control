@@ -1,9 +1,10 @@
 import socket
 import os
+import sys
 
 from threading import Thread
 from media.screens import Screens
-from media.sound import Sound
+from media.sound_manager import SoundManager
 
 pipe_name = 'media_pipe'
 
@@ -19,6 +20,9 @@ class MediaServer(object):
     def __init__(self, screens):
         super(MediaServer, self).__init__()
         self.screens = screens
+        self.screen_dict = screens.get_screens()
+        self.sounds = SoundManager()
+        self.stopped = False
 
         if os.path.exists(pipe_name):
             os.remove(pipe_name)
@@ -30,46 +34,73 @@ class MediaServer(object):
 
     def reader_loop(self):
         with open(pipe_name) as self.media_pipe:
-            while True:
-                # try:
+            while not self.stopped:
+                try:
                     request = self.media_pipe.readline().strip()
                     if request == '':
                         break
-                    print("Recieved request" + request)
+                    print("Recieved request " + request)
                     self.process_request(request)
-                # except Exception, e:
-                #     print(e)
+                except Exception, e:
+                    print(e)
+
+        print("Media server stopped")
+        self.screens.stop()
+
+    def stop(self):
+        self.stopped = True
+        if(not hasattr(self, 'media_pipe')):
+            with open(pipe_name, 'w'):
+                pass
+        print("Stopping server")
 
     def process_request(self, request):
-        parts = request.split()
-        if len(parts) == 0:
+        request_type, space, request  = request.partition(' ')
+
+        if(space == '' or request == ''):
             return
 
-        if parts[REQUEST_TYPE] == 'screen':
-            self.process_screen(parts)
-        elif parts[REQUEST_TYPE] == 'sound':
-            self.process_sound(parts)
+        if request_type == 'screen':
+            self.process_screen(request)
+        elif request_type == 'sound':
+            self.process_sound(request)
         else:
-            print("Invalid command " + parts[REQUEST_TYPE])
+            print("Invalid command " + request_type)
 
-    def process_screen(self, parts):
-        screen_name = parts[SCREEN_NAME]
+    def process_screen(self, request):
+        screen_name, space, request  = request.partition(' ')
+        command, space, request  = request.partition(' ')
         print("Looking for screen " + screen_name)
-        screen = self.screens[screen_name]
-        screen.play_video(parts[MEDIA_PATH])
+        screen = self.screen_dict[screen_name]
 
-    def process_sound(self, parts):
-        volume = 80
-        sound = Sound(parts[SOUND_PATH])
+        if(command == 'play'):
+            screen.play_video(request)
+        elif(command == 'blackout'):
+            screen.stop()
 
-        if(len(parts) == 3):
-            volume = int(parts[SOUND_VOLUME])
+    def process_sound(self, request):
+        command, space, request  = request.partition(' ')
+        sound_name, space, request  = request.partition(' ')
 
-        sound.play(volume)
+        if(command == 'play'):
+            volume_str, space, path  = request.partition(' ')
+
+            print("Playing " + sound_name + " (" + path + ") at volume " + volume_str)
+
+            self.sounds.play_sound(sound_name, path, int(volume_str))
+        elif(command == 'volume'):
+            volume_str, space, request  = request.partition(' ')
+            self.sounds.set_volume(sound_name, int(volume_str))
+        elif(command == 'stop'):
+            self.sounds.stop(sound_name)
+
 
 screens = Screens()
 
-media_server = MediaServer(screens.get_screens())
+media_server = MediaServer(screens)
 media_server.start()
 
 screens.start()
+
+media_server.stop()
+print("Bye")

@@ -11,8 +11,15 @@ public class ScreenMessage implements MediaMessage {
 	
 	public static ScreenMessage blackout(Screen screen)
 	{
-		//TODO: Create screen message
-		return new ScreenMessage(null);
+		StringBuilder builder = new StringBuilder("screen");
+		builder.append(" ");
+		
+		builder.append(screen.getName());
+		builder.append(" ");
+		
+		builder.append("blackout");
+
+		return new ScreenMessage(builder.toString());
 	}
 	
 	public static ScreenMessage showMedia(Screen screen, Video video)
@@ -26,9 +33,7 @@ public class ScreenMessage implements MediaMessage {
 		builder.append("play");
 		builder.append(" ");
 		
-		builder.append("\"");
 		builder.append(video.getVideoMessage());
-		builder.append("\"");
 			
 		return new ScreenMessage(builder.toString());
 	}
