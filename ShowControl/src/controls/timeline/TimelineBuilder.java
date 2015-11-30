@@ -44,6 +44,45 @@ public class TimelineBuilder {
 		return this.addEvent(event, newStartTime);
 	}
 	
+	/**
+	 * Add event that comes with
+	 * @param event
+	 * @param withEvent
+	 * @return
+	 */
+	public Event addEventWith(Event event, Event withEvent)
+	{
+		return this.addEventWith(event, withEvent, Duration.ZERO);
+	}
+	
+	/**
+	 * At event that comes with another event
+	 * @param event
+	 * @param withEvent
+	 * @param offset
+	 * @return
+	 */
+	public Event addEventWith(Event event, Event withEvent, Duration offset)
+	{
+		Duration startTime = eventStartTime.get(withEvent);
+		if(startTime == null)
+		{
+			throw new RuntimeException("Run after event not registered");
+		}
+		
+		return this.addEvent(event, startTime.plus(offset));
+	}
+	
+	public TimelineSequence addTimelineSequence(Duration initialTime)
+	{
+		return new TimelineSequence(this, initialTime);
+	}
+	
+	public TimelineSequence addTimelineSequence()
+	{
+		return addTimelineSequence(Duration.ZERO);
+	}
+	
 	public Timeline buildTimeline()
 	{
 		return new Timeline(eventList);
