@@ -68,17 +68,17 @@ public class StanleyParable implements AutoCloseable{
 		MindControl mindControl = new MindControl(interfaces);
 		Freedom freedom = new Freedom(interfaces);
 		
-//		LOG.info("Running intro");
-//		intro.run();
-//		
-//		LOG.info("Running office");
-//		office.run();
-//		
-//		LOG.info("Running meeting");
-//		meeting.run();
-//		
-//		LOG.info("Running bosses");
-//		bosses.run();
+		LOG.info("Running intro");
+		intro.run();
+		
+		LOG.info("Running office");
+		office.run();
+		
+		LOG.info("Running meeting");
+		meeting.run();
+		
+		LOG.info("Running bosses");
+		bosses.run();
 		
 		LOG.info("Running mind control");
 		mindControl.run();
