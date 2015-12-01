@@ -17,6 +17,17 @@ public class TimelineSequence {
 		this.builder = builder;
 	}
 	
+	/**
+	 * Create a timeline sequence that starts after another event.
+	 * @param builder
+	 * @param initialEvent
+	 */
+	TimelineSequence(TimelineBuilder builder, Event afterEvent)
+	{
+		this.previousEvent = afterEvent;
+		this.builder = builder;
+	}
+	
 	public void addEvent(Event event)
 	{
 		addEvent(event, Duration.ZERO);

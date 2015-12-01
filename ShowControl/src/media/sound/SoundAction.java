@@ -1,6 +1,7 @@
-package media;
+package media.sound;
 
 import controls.Action;
+import media.MessageTransmitter;
 
 public class SoundAction implements Action {
 	private MessageTransmitter transmitter;

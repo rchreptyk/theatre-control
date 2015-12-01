@@ -4,10 +4,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 
 import controls.Action;
-import controls.Event;
 import controls.InstantAction;
 import controls.View;
-import controls.timeline.Timeline;
 import controls.timeline.TimelineThread;
 import controls.timeline.TimelineBuilder;
 import lighting.change.LightingChange;
@@ -77,7 +75,7 @@ public class LightingView implements View {
 		}
 		
 		int time = 0;
-		for(int i = 0; i < numberOfEvents; i++)
+		for(int i = 0; i < numberOfEvents + 1; i++)
 		{
 			builder.addEvent(new LightingLoopUpdateEvent(loop), Duration.ofMillis(time));
 			time += refreshRateMili;

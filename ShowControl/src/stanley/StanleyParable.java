@@ -5,17 +5,25 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.logging.Logger;
 
 import controls.Sequence;
 import lighting.LightingLoop;
 import lighting.OutputStreamDMXTransmitter;
 import media.MessageTransmitter;
-import media.Screen;
-import media.ScreenViewFactory;
-import media.SoundViewFactory;
+import media.screens.Screen;
+import media.screens.ScreenViewFactory;
+import media.sound.SoundViewFactory;
+import stanley.views.Bosses;
+import stanley.views.Freedom;
 import stanley.views.Introduction;
+import stanley.views.MeetingRoom;
+import stanley.views.MindControl;
+import stanley.views.Office;
 
 public class StanleyParable implements AutoCloseable{
+	private static Logger LOG = Logger.getLogger("StanleyParable");
+	
 	private OutputStream mediaPipe;
 	private MessageTransmitter mediaTransmitter;
 	
@@ -54,7 +62,29 @@ public class StanleyParable implements AutoCloseable{
 		startLightingLoop();
 				
 		Introduction intro = new Introduction(interfaces);
-		intro.run();
+		Office office = new Office(interfaces);
+		MeetingRoom meeting = new MeetingRoom(interfaces);
+		Bosses bosses = new Bosses(interfaces);
+		MindControl mindControl = new MindControl(interfaces);
+		Freedom freedom = new Freedom(interfaces);
+		
+//		LOG.info("Running intro");
+//		intro.run();
+//		
+//		LOG.info("Running office");
+//		office.run();
+//		
+//		LOG.info("Running meeting");
+//		meeting.run();
+//		
+//		LOG.info("Running bosses");
+//		bosses.run();
+		
+		LOG.info("Running mind control");
+		mindControl.run();
+		
+		LOG.info("Running freedom");
+		freedom.run();
 		
 		stopLightingLoop();
 	}

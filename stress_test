@@ -1,0 +1,74 @@
+sound play Intro1 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_1_00.wav
+screen left play /Users/russell/Desktop/Workspace/stanely/media/me/me.jpg
+screen center play /Users/russell/Desktop/Workspace/stanely/media/me/me.jpg
+screen right play /Users/russell/Desktop/Workspace/stanely/media/me/me.jpg
+screen center play /Users/russell/Desktop/Workspace/stanely/media/big_building.jpg
+sound play Intro2 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_1_01.wav
+screen left play /Users/russell/Desktop/Workspace/stanely/media/427/left.png
+screen center play /Users/russell/Desktop/Workspace/stanely/media/427/middle.png
+screen right play /Users/russell/Desktop/Workspace/stanely/media/427/right.png
+screen left play /Users/russell/Desktop/Workspace/stanely/media/427/4.png
+screen center play /Users/russell/Desktop/Workspace/stanely/media/427/2.png
+screen right play /Users/russell/Desktop/Workspace/stanely/media/427/7.png
+screen left play /Users/russell/Desktop/Workspace/stanely/media/orders/orders1.png
+screen center play /Users/russell/Desktop/Workspace/stanely/media/orders/orders2.png
+screen right play /Users/russell/Desktop/Workspace/stanely/media/orders/orders3.png
+screen left play /Users/russell/Desktop/Workspace/stanely/media/427/4.png
+screen center play /Users/russell/Desktop/Workspace/stanely/media/427/2.png
+screen right play /Users/russell/Desktop/Workspace/stanely/media/427/7.png
+screen left play /Users/russell/Desktop/Workspace/stanely/media/monthdayyear/day.png
+screen center play /Users/russell/Desktop/Workspace/stanely/media/monthdayyear/day.png
+screen right play /Users/russell/Desktop/Workspace/stanely/media/monthdayyear/day.png
+screen right play /Users/russell/Desktop/Workspace/stanely/media/monthdayyear/month.png
+screen left play /Users/russell/Desktop/Workspace/stanely/media/monthdayyear/month.png
+screen center play /Users/russell/Desktop/Workspace/stanely/media/monthdayyear/month.png
+screen right play /Users/russell/Desktop/Workspace/stanely/media/monthdayyear/year.png
+screen left play /Users/russell/Desktop/Workspace/stanely/media/monthdayyear/year.png
+screen center play /Users/russell/Desktop/Workspace/stanely/media/monthdayyear/year.png
+sound play Intro6 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_1_05.wav
+sound play Intro7 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_1_06.wav
+screen right play /Users/russell/Desktop/Workspace/stanely/media/happy.png
+screen center play /Users/russell/Desktop/Workspace/stanely/media/happy.png
+screen left play /Users/russell/Desktop/Workspace/stanely/media/happy.png
+sound play Intro1b 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_2_00.wav
+screen left blackout
+screen center blackout
+screen right blackout
+sound play Intro2b 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_2_01.wav
+sound play Intro3b 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_2_02.wav
+sound play Intro4b 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_2_03.wav
+sound play Intro5b 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_2_04.wav
+sound play Intro6b 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_2_05.wav
+sound play Intro7b 70 /Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_2_06.wav
+screen center play /Users/russell/Desktop/Workspace/stanely/media/office/middle.png
+screen right play /Users/russell/Desktop/Workspace/stanely/media/office/right.png
+screen left play /Users/russell/Desktop/Workspace/stanely/media/office/left.png
+sound play office1 70 /Users/russell/Desktop/Workspace/stanely/narrations/2 Office/Office_1_00.wav
+screen right play /Users/russell/Desktop/Workspace/stanely/media/doors/door_right.jpg
+screen left play /Users/russell/Desktop/Workspace/stanely/media/doors/door_left.jpg
+sound play office2 70 /Users/russell/Desktop/Workspace/stanely/narrations/2 Office/Office_1_01.wav
+sound play twodoors 70 /Users/russell/Desktop/Workspace/stanely/narrations/3 Doors/Two_Doors_00.wav
+screen left play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide1.jpg
+screen right play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide1.jpg
+screen center play /Users/russell/Desktop/Workspace/stanely/media/meeting room/meeting_room.jpg
+sound play clicker1 30 /Users/russell/Desktop/Workspace/stanely/sound/office/office_projector_slide_01.wav
+sound play clicker2 30 /Users/russell/Desktop/Workspace/stanely/sound/office/office_projector_slide_01.wav
+screen left play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide2.jpg
+screen right play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide2.jpg
+sound play meetingRoom1 70 /Users/russell/Desktop/Workspace/stanely/narrations/Left Path/1 Meeting Room/Meeting_room_00.wav
+sound play clicker3 30 /Users/russell/Desktop/Workspace/stanely/sound/office/office_projector_slide_01.wav
+sound play meetingRoom2 70 /Users/russell/Desktop/Workspace/stanely/narrations/Left Path/1 Meeting Room/Meeting_room_01.wav
+screen left play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide3.jpg
+screen right play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide3.jpg
+sound play clicker4 30 /Users/russell/Desktop/Workspace/stanely/sound/office/office_projector_slide_01.wav
+screen right play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide4.jpg
+screen left play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide4.jpg
+sound play clicker5 30 /Users/russell/Desktop/Workspace/stanely/sound/office/office_projector_slide_01.wav
+screen left play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide5.jpg
+screen right play /Users/russell/Desktop/Workspace/stanely/media/slides/presentation/Slide5.jpg
+screen left play /Users/russell/Desktop/Workspace/stanely/media/boses/FirePlace.flv
+ screen center play /Users/russell/Desktop/Workspace/stanely/media/boses/middle.jpg
+ screen right play /Users/russell/Desktop/Workspace/stanely/media/boses/middle.jpg
+ sound play boss1 70 /Users/russell/Desktop/Workspace/stanely/narrations/Left Path/2 Bosses Office/Boss_1_00.wav
+ sound play boss2 70 /Users/russell/Desktop/Workspace/stanely/narrations/Left Path/2 Bosses Office/Boss_1_01.wav
+ sound play boss3 70 /Users/russell/Desktop/Workspace/stanely/narrations/Left Path/2 Bosses Office/Boss_1_02.wav

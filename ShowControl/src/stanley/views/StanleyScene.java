@@ -2,9 +2,9 @@ package stanley.views;
 
 import controls.Sequence;
 import lighting.LightingLoop;
-import media.Screen;
-import media.ScreenViewFactory;
-import media.SoundViewFactory;
+import media.screens.Screen;
+import media.screens.ScreenViewFactory;
+import media.sound.SoundViewFactory;
 import stanley.StanleyInterfaces;
 import stanley.StanleyLightingConfig;
 import stanley.StanleyMediaConfig;

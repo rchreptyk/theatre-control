@@ -1,4 +1,4 @@
-package media;
+package media.screens;
 
 public class FileVideo implements Video {
 	private String path;

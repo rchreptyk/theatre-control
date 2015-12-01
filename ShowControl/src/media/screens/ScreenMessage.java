@@ -1,4 +1,6 @@
-package media;
+package media.screens;
+
+import media.MediaMessage;
 
 public class ScreenMessage implements MediaMessage {
 

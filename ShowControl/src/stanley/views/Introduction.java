@@ -11,7 +11,7 @@ import controls.timeline.TimelineSequence;
 import controls.timeline.TimelineView;
 import lighting.LightingView;
 import lighting.change.IntensityChange;
-import media.AudioSequence;
+import media.sound.AudioSequence;
 import stanley.StanleyInterfaces;
 
 public class Introduction extends StanleyScene {

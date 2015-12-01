@@ -1,4 +1,4 @@
-package media;
+package media.sound;
 
 public class FileSound implements Sound{
 	private String name;

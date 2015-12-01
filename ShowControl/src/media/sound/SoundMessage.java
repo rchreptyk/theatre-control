@@ -1,4 +1,8 @@
-package media;
+package media.sound;
+
+import java.time.Duration;
+
+import media.MediaMessage;
 
 public class SoundMessage implements MediaMessage {
 
@@ -9,7 +13,7 @@ public class SoundMessage implements MediaMessage {
 		this.message = message;
 	}
 	
-	public static SoundMessage playSound(String name, String path, int volume)
+	public static SoundMessage playSound(String name, String path, int volume, Duration offset)
 	{
 		StringBuilder message = new StringBuilder("sound play");
 		message.append(" ");
@@ -18,6 +22,9 @@ public class SoundMessage implements MediaMessage {
 		message.append(" ");
 		
 		message.append(volume);
+		message.append(" ");
+		
+		message.append(offset.toMillis());
 		message.append(" ");
 		
 		message.append(path);

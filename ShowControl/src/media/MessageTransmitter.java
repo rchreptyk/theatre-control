@@ -13,7 +13,9 @@ public class MessageTransmitter implements AutoCloseable {
 	
 	public synchronized void sendMessage(MediaMessage message)
 	{
-		writer.println(message.getMessage());
+		String messageString = message.getMessage();
+		System.out.println(messageString);
+		writer.println(messageString);
 		writer.flush();
 	}
 

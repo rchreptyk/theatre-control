@@ -1,4 +1,6 @@
-package media;
+package media.screens;
+
+import media.MessageTransmitter;
 
 public class ScreenViewFactory {
 	private MessageTransmitter transmitter;
@@ -11,5 +13,10 @@ public class ScreenViewFactory {
 	public ScreenView createScreenView(Screen screen, Video video)
 	{
 		return new ScreenView(transmitter, screen, video);
+	}
+	
+	public ScreenBlackoutView createBlackout(Screen screen)
+	{
+		return new ScreenBlackoutView(transmitter, screen);
 	}
 }

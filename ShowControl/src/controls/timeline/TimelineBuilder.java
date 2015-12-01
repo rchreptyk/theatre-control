@@ -78,6 +78,11 @@ public class TimelineBuilder {
 		return new TimelineSequence(this, initialTime);
 	}
 	
+	public TimelineSequence addTimelineSequence(Event afterEvent)
+	{
+		return new TimelineSequence(this, afterEvent);
+	}
+	
 	public TimelineSequence addTimelineSequence()
 	{
 		return addTimelineSequence(Duration.ZERO);

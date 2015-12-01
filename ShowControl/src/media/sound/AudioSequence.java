@@ -1,4 +1,4 @@
-package media;
+package media.sound;
 
 import java.time.Duration;
 
@@ -21,11 +21,15 @@ public class AudioSequence {
 	
 	public Event addAudio(Sound sound, Duration soundDuration)
 	{
-		View narrationView;
-		
-		narrationView = factory.createSoundView(sound, volume);
+		return addAudio(sound, soundDuration, Duration.ZERO);
+	}
+	
+	public Event addAudio(Sound sound, Duration soundDuration, Duration delay)
+	{
+		View narrationView = factory.createSoundView(sound, volume);
 		Event event = new ViewShowEvent(narrationView, soundDuration);
-		sequence.addEvent(event);
+		sequence.addEvent(event, delay);
+		
 		return event;
 	}
 }

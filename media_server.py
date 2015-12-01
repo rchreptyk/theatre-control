@@ -83,11 +83,12 @@ class MediaServer(object):
         sound_name, space, request  = request.partition(' ')
 
         if(command == 'play'):
-            volume_str, space, path  = request.partition(' ')
+            volume_str, space, request  = request.partition(' ')
+            milli_offset, space, path  = request.partition(' ')
 
             print("Playing " + sound_name + " (" + path + ") at volume " + volume_str)
 
-            self.sounds.play_sound(sound_name, path, int(volume_str))
+            self.sounds.play_sound(sound_name, path, int(volume_str), int(milli_offset))
         elif(command == 'volume'):
             volume_str, space, request  = request.partition(' ')
             self.sounds.set_volume(sound_name, int(volume_str))

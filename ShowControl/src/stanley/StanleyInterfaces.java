@@ -1,9 +1,9 @@
 package stanley;
 
 import lighting.LightingLoop;
-import media.Screen;
-import media.ScreenViewFactory;
-import media.SoundViewFactory;
+import media.screens.Screen;
+import media.screens.ScreenViewFactory;
+import media.sound.SoundViewFactory;
 
 public final class StanleyInterfaces {
 	private StanleyLightingConfig lights;

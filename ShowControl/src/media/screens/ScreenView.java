@@ -1,8 +1,9 @@
-package media;
+package media.screens;
 
 import controls.Action;
 import controls.InstantAction;
 import controls.View;
+import media.MessageTransmitter;
 
 public class ScreenView implements View {
 	MessageTransmitter transmitter;

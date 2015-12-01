@@ -1,4 +1,4 @@
-package media;
+package media.sound;
 
 public interface Sound {
 	/**
