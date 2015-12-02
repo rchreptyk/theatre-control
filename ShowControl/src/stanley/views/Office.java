@@ -34,10 +34,10 @@ public class Office extends StanleyScene {
 		audioSequence.addAudio(sounds.introb6, Duration.ofSeconds(9));
 		Event gotUpFromDesk = audioSequence.addAudio(sounds.introb7, Duration.ofSeconds(7));
 		
-		Event allOfHisCooworkers = audioSequence.addAudio(sounds.office1, Duration.ofSeconds(4), Duration.ofSeconds(10));
+		audioSequence.addAudio(sounds.office1, Duration.ofSeconds(4), Duration.ofSeconds(10));
 		Event goingToMeetingRoom = audioSequence.addAudio(sounds.office2, Duration.ofSeconds(5), Duration.ofSeconds(3));
 		
-		audioSequence.addAudio(sounds.twodoors, Duration.ofSeconds(5), Duration.ofSeconds(5));
+		Event twoDoorsEvent = audioSequence.addAudio(sounds.twodoors, Duration.ofSeconds(5), Duration.ofSeconds(5));
 		
 		
 		/* Media */
@@ -80,26 +80,21 @@ public class Office extends StanleyScene {
 		
 		// Office View
 		Duration fadeLightTime = Duration.ofSeconds(10);
-		LightingView officeView = new LightingView(lightingLoop, fadeLightTime);
-		officeView.addChange(new IntensityChange(lights.area2Top, 60));
-		officeView.addChange(new IntensityChange(lights.area2Front, 60));
-		officeView.addChange(new IntensityChange(lights.area2Left45, 60));
-		officeView.addChange(new IntensityChange(lights.area2Right45, 60));
+		LightingView officeView = lightingViews.getOfficeView(fadeLightTime);
 		builder.addEventWith(new ViewShowEvent(officeView, fadeLightTime), noOrders);
 		
-		//Side lights on
+		//House light
 		Duration sideFadeTime = Duration.ofMillis(500);
-		LightingView sideLightsOn = new LightingView(lightingLoop, sideFadeTime);
-		sideLightsOn.addChange(new IntensityChange(lights.houseTwo, 60));
-		sideLightsOn.addChange(new IntensityChange(lights.houseOne, 60));
+		LightingView sideLightsOn = lightingViews.getPaintingView(sideFadeTime);
 		
 		//Side lights off
-		LightingView sideLightsOff = new LightingView(lightingLoop, sideFadeTime);
-		sideLightsOff.addChange(new IntensityChange(lights.houseTwo, 0));
-		sideLightsOff.addChange(new IntensityChange(lights.houseOne, 0));
+		LightingView sideLightsOff = lightingViews.getPaintingViewOff(sideFadeTime);
 	
-		builder.addEventWith(new ViewShowEvent(sideLightsOn, sideFadeTime), allOfHisCooworkers, Duration.ofSeconds(-3));
-		builder.addEventWith(new ViewShowEvent(sideLightsOff, sideFadeTime), allOfHisCooworkers);
+		builder.addEventAfterEvent(new ViewShowEvent(sideLightsOn, sideFadeTime), gotUpFromDesk, Duration.ofSeconds(4));
+		builder.addEventWith(new ViewShowEvent(sideLightsOff, sideFadeTime), twoDoorsEvent);
+		
+		LightingView officeOff = lightingViews.getBossesOfficeViewOff(Duration.ZERO);
+		builder.addEventAfterEvent(new ViewShowEvent(officeOff, Duration.ZERO), twoDoorsEvent);
 		
 		/* Build Sequence */
 		

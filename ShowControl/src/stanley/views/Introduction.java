@@ -135,12 +135,10 @@ public class Introduction extends StanleyScene {
 		/* Lighting */
 		
 		Duration fadeLightTime = Duration.ofSeconds(5);
-		LightingView view = new LightingView(lightingLoop, fadeLightTime);
-		view.addChange(new IntensityChange(lights.area2Top, 60));
+		LightingView view = lightingViews.getTopDown(fadeLightTime);
 		builder.addEventWith(new ViewShowEvent(view, fadeLightTime), employee427sjobs);
 		
-		LightingView black = new LightingView(lightingLoop);
-		black.addChange(new IntensityChange(lights.area2Top, 0));
+		LightingView black = lightingViews.getTopDownBlack(Duration.ZERO);
 		builder.addEventWith(new ViewShowEvent(black, Duration.ofSeconds(2)), showHappyEvent);
 		
 		Timeline timeline = builder.buildTimeline();

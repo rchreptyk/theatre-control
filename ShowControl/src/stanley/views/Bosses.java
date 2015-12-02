@@ -10,7 +10,6 @@ import controls.timeline.TimelineBuilder;
 import controls.timeline.TimelineSequence;
 import controls.timeline.TimelineView;
 import lighting.LightingView;
-import lighting.change.IntensityChange;
 import media.sound.AudioSequence;
 import media.sound.UniqueSound;
 import stanley.StanleyInterfaces;
@@ -79,19 +78,10 @@ public class Bosses extends StanleyScene {
 		
 		/* Lighting */
 		Duration fadeLightTime = Duration.ofSeconds(3);
-		LightingView view = new LightingView(lightingLoop, fadeLightTime);
-		view.addChange(new IntensityChange(lights.warmBackLeft, 40));
-		view.addChange(new IntensityChange(lights.warmBackRight, 40));
+		LightingView view = lightingViews.getBossesOfficeView(fadeLightTime);
 		builder.addEvent(new ViewShowEvent(view, fadeLightTime), Duration.ZERO);
 		
-		LightingView blackout = new LightingView(lightingLoop);
-		blackout.addChange(new IntensityChange(lights.area2Front, 0));
-		blackout.addChange(new IntensityChange(lights.area2Left45, 0));
-		blackout.addChange(new IntensityChange(lights.area2Right45, 0));
-		blackout.addChange(new IntensityChange(lights.area2Top, 0));
-		blackout.addChange(new IntensityChange(lights.warmBackLeft, 0));
-		blackout.addChange(new IntensityChange(lights.warmBackRight, 0));
-		
+		LightingView blackout = lightingViews.getBossesOfficeViewOff(Duration.ZERO);
 		builder.addEventWith(new ViewShowEvent(blackout, Duration.ZERO), lightShutDownEvent);
 		
 		Timeline timeline = builder.buildTimeline();

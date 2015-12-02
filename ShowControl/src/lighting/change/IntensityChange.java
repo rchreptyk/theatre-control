@@ -35,20 +35,12 @@ public class IntensityChange implements LightingChange {
 			return changes;
 		}
 		
-		int oldIntensity = intensity.getIntensity();
-		int difference = newIntensity - oldIntensity;
-		
-		double intensityPerTick = (double)difference / (double)count;
-		double nextIntensity = oldIntensity + intensityPerTick;
-	
-		for(int i = 0; i < count - 1; i++)
+		ChangeCalculator calculator = new ChangeCalculator(intensity.getIntensity(), newIntensity);
+		for(int change : calculator.getChanges(count))
 		{
-			int roundedIntensity = (int) Math.round(nextIntensity);
-			changes.add(new IntensityChange(intensity, roundedIntensity));
-			nextIntensity += intensityPerTick;
+			changes.add(new IntensityChange(intensity, change));
 		}
 		
-		changes.add(this);
 		return changes;
 	}
 

@@ -4,7 +4,7 @@ import media.sound.FileSound;
 import media.sound.Sound;
 
 public class StanleySoundConfig {
-	public final int NARRATION_VOLUME = 70;
+	public final int NARRATION_VOLUME = Volumes.NARRATION_VOLUME;
 	
 	public Sound intro1 = new FileSound("Intro1", "/Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_1_00.wav");
 	public Sound intro2 = new FileSound("Intro2", "/Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_1_01.wav");
@@ -26,6 +26,8 @@ public class StanleySoundConfig {
 	
 	public Sound twodoors = new FileSound("twodoors", "/Users/russell/Desktop/Workspace/stanely/narrations/3 Doors/Two_Doors_00.wav");
 	public Sound twodoorsRight = new FileSound("twodoorsRight", "/Users/russell/Desktop/Workspace/stanely/narrations/3 Doors/Two_Doors_Right_00.wav");
+	
+	//LEFT DOOR
 	
 	public Sound meetingRoom1 = new FileSound("meetingRoom1", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/1 Meeting Room/Meeting_room_00.wav");
 	public Sound meetingRoom2 = new FileSound("meetingRoom2", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/1 Meeting Room/Meeting_room_01.wav");
@@ -79,6 +81,32 @@ public class StanleySoundConfig {
 	
 	public Sound monitorMusic = new FileSound("monitorMusic", "/Users/russell/Desktop/Workspace/stanely/music/raw/Glenn Gould - Concerto for Piano and Orchestra No. 5 in F Minor, BWV 1056_ II. Largo.mp3");
 	public Sound hatchOpening = new FileSound("hatchOpening", "/Users/russell/Desktop/Workspace/stanely/sound/mind_control/hatch_opening.wav");
-
 	
+	//DEATH
+	public Sound death1 = new FileSound("death1", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_00.wav");
+	public Sound death2 = new FileSound("death2", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_01.wav");
+	public Sound death3 = new FileSound("death3", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_02.wav");
+	public Sound death4 = new FileSound("death4", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_03.wav");
+	public Sound death5 = new FileSound("death5", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_04.wav");
+	public Sound death6 = new FileSound("death6", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_05.wav");
+	public Sound death7 = new FileSound("death7", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_34_seconds.wav");
+	public Sound deathMusic = new FileSound("deathMusic", "/Users/russell/Desktop/Workspace/stanely/music/death2.mov");
+	
+	public Sound countdown1 = new FileSound("countdown1", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_31.wav");
+	public Sound countdown2 = new FileSound("countdown2", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_32.wav");
+	public Sound countdown3 = new FileSound("countdown3", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_33.wav");
+	public Sound countdown4 = new FileSound("countdown4", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_34.wav");
+	public Sound countdown5 = new FileSound("countdown5", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_35.wav");
+	
+	//RIGHT DOOR
+	public Sound lounge_music = new FileSound("loungemusic", "/Users/russell/Desktop/Workspace/stanely/music/raw/stardust.mp3"); 
+	public Sound lounge1 = new FileSound("lounge1", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/1 Lounge/Lounge_1a_00.wav");
+	public Sound lounge2 = new FileSound("lounge2", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/1 Lounge/Lounge_1a_01.wav");
+	public Sound lounge3 = new FileSound("lounge3", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/1 Lounge/Lounge_1b_00.wav");
+	public Sound lounge4 = new FileSound("lounge4", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/1 Lounge/Lounge_1b_01.wav");
+	public Sound lounge5 = new FileSound("lounge5", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/1 Lounge/Lounge_1c_00.wav");
+	public Sound lounge6 = new FileSound("lounge6", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/1 Lounge/Lounge_1c_01.wav");
+	public Sound loungeExit = new FileSound("lounge_exit", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/2 Lounge_exit_delay_00.wav");
+
+	public Sound decisionMusic = new FileSound("decision", "/Users/russell/Desktop/Workspace/stanely/music/raw/Hammock - Glossolalia.mp3");
 }

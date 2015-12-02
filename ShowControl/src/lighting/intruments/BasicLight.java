@@ -57,7 +57,7 @@ public class BasicLight implements Instrument, Intensity, DMXChannel {
 
 	@Override
 	public int getLevel() {
-		return 256 * intensity / 100;
+		return 255 * intensity / 100;
 	}
 
 	@Override

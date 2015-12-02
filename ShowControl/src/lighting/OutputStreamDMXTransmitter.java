@@ -31,7 +31,7 @@ public class OutputStreamDMXTransmitter implements DMXFrameTransmitter{
 			if(level < 0)
 				throw new RuntimeException("Level cannot be less then 256");
 			
-			int_frame[channel.getChannel()] = level;
+			int_frame[channel.getChannel() - 1] = level;
 		}
 		
 		for(int level : int_frame)

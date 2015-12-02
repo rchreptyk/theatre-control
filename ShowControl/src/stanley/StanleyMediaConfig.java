@@ -45,7 +45,12 @@ public class StanleyMediaConfig {
 	public FileVideo monitors3 = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/mind_controls/right.png");
 	public FileVideo mindControls = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/mind_controls/controls.png");
 	
+	public FileVideo loungeLeft = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/lounge/left.png");
+	public FileVideo loungeMiddle = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/lounge/middle.png");
+	public FileVideo loungeRight = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/lounge/right.png");
+	
 	public FileVideo landscapes = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/landscapes.mp4");
+	public FileVideo death = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/death/34seconds.mp4");
 	
 	public FileVideo[] slides = new FileVideo[7];
 	

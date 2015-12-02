@@ -18,6 +18,7 @@ public abstract class StanleyScene {
 	protected SoundViewFactory soundViewFactory;
 	protected ScreenViewFactory screenViewFactory;
 	protected LightingLoop lightingLoop;
+	protected LightingViews lightingViews;
 	
 	protected Screen leftScreen;
 	protected Screen middleScreen;
@@ -36,6 +37,7 @@ public abstract class StanleyScene {
 		this.leftScreen = interfaces.getLeftScreen();
 		this.middleScreen = interfaces.getMiddleScreen();
 		this.rightScreen = interfaces.getRightScreen();
+		this.lightingViews = new LightingViews(lightingLoop, lights);
 		
 		this.sequence = new Sequence(name);
 	}

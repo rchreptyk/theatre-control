@@ -13,6 +13,7 @@ import lighting.LightingView;
 import lighting.change.IntensityChange;
 import media.sound.AudioSequence;
 import stanley.StanleyInterfaces;
+import stanley.Volumes;
 
 public class Freedom extends StanleyScene {
 
@@ -37,7 +38,7 @@ public class Freedom extends StanleyScene {
 		Event lastAudio = audioSequence.addAudio(sounds.freedom11, Duration.ofSeconds(3));
 		
 		/* Music */
-		View musicView = soundViewFactory.createSoundView(sounds.freedomMusic, 60);
+		View musicView = soundViewFactory.createSoundView(sounds.freedomMusic, Volumes.MUSIC_VOLUME);
 		builder.addEvent(new ViewShowEvent(musicView, Duration.ofSeconds(97)), Duration.ZERO);
 		
 		/* Video */
@@ -58,12 +59,12 @@ public class Freedom extends StanleyScene {
 		builder.addEventAfterEvent(new ViewShowEvent(blackRight, Duration.ofSeconds(10)), lastAudio);
 		
 		/* Lights */
-		
 		Duration sunlightDuration = Duration.ofSeconds(5);
-		LightingView view = new LightingView(lightingLoop, sunlightDuration);
-		view.addChange(new IntensityChange(lights.area2Left45, 40));
-		view.addChange(new IntensityChange(lights.area2Right45, 40));
+		LightingView view = lightingViews.getSunLight(sunlightDuration);
 		builder.addEventWith(new ViewShowEvent(view, sunlightDuration), sunlight);
+		
+		LightingView sunlightOff = lightingViews.getSunLightOff(sunlightDuration);
+		builder.addEventAfterEvent(new ViewShowEvent(sunlightOff, sunlightDuration), lastAudio);
 		
 		Timeline timeline = builder.buildTimeline();
 		TimelineView timelineView = new TimelineView(timeline);

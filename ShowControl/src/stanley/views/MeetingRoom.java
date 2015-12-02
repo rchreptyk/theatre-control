@@ -8,6 +8,7 @@ import controls.timeline.Timeline;
 import controls.timeline.TimelineBuilder;
 import controls.timeline.TimelineSequence;
 import controls.timeline.TimelineView;
+import lighting.LightingView;
 import media.sound.AudioSequence;
 import media.sound.UniqueSound;
 import stanley.StanleyInterfaces;
@@ -51,6 +52,11 @@ public class MeetingRoom extends StanleyScene{
 		/* Media */
 		View meetingRoomMiddle = screenViewFactory.createScreenView(middleScreen, media.meetingRoom);
 		builder.addEvent(new ViewShowEvent(meetingRoomMiddle, Duration.ofSeconds(5)), Duration.ZERO);
+		
+		/* Lighting */
+		Duration fadeLightTime = Duration.ofSeconds(5);
+		LightingView officeView = lightingViews.getOfficeView(fadeLightTime);
+		builder.addEvent(new ViewShowEvent(officeView, fadeLightTime), Duration.ZERO);
 		
 		Timeline timeline = builder.buildTimeline();
 		TimelineView timelineView = new TimelineView(timeline);

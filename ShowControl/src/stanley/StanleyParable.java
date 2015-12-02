@@ -15,11 +15,17 @@ import media.screens.Screen;
 import media.screens.ScreenViewFactory;
 import media.sound.SoundViewFactory;
 import stanley.views.Bosses;
+import stanley.views.Death;
+import stanley.views.DecisionPoint;
 import stanley.views.Freedom;
 import stanley.views.Introduction;
+import stanley.views.Lounge;
 import stanley.views.MeetingRoom;
 import stanley.views.MindControl;
 import stanley.views.Office;
+import stanley.views.PostShow;
+import stanley.views.Preshow;
+import stanley.views.TestSequence;
 
 public class StanleyParable implements AutoCloseable{
 	private static Logger LOG = Logger.getLogger("StanleyParable");
@@ -60,19 +66,45 @@ public class StanleyParable implements AutoCloseable{
 	public void beginShow()
 	{
 		startLightingLoop();
-				
+		
+//		TestSequence testSequence = new TestSequence(interfaces);
+		Preshow preshow = new Preshow(interfaces);
 		Introduction intro = new Introduction(interfaces);
 		Office office = new Office(interfaces);
+		Lounge lounge = new Lounge(interfaces);
 		MeetingRoom meeting = new MeetingRoom(interfaces);
 		Bosses bosses = new Bosses(interfaces);
 		MindControl mindControl = new MindControl(interfaces);
 		Freedom freedom = new Freedom(interfaces);
+		Death death = new Death(interfaces);
+		PostShow postshow = new PostShow(interfaces);
+		
+		DecisionPoint twoDoors = new DecisionPoint("Two Doors", interfaces);
+		DecisionPoint turnOffOnMachine = new DecisionPoint("On Off Machine", interfaces);
+		DecisionPoint straightOrLeft = new DecisionPoint("On Off Machine", interfaces);
+		
+		boolean doLounge = true;
+		boolean turnedOffControlControls = true;
+		
+		LOG.info("Preshow");
+		preshow.run();
 		
 		LOG.info("Running intro");
 		intro.run();
 		
 		LOG.info("Running office");
 		office.run();
+		
+		LOG.info("Decision");
+		twoDoors.run();
+		
+		if(doLounge)
+		{
+			LOG.info("Running lounge");
+			lounge.run();
+			
+			straightOrLeft.run();
+		}
 		
 		LOG.info("Running meeting");
 		meeting.run();
@@ -83,8 +115,20 @@ public class StanleyParable implements AutoCloseable{
 		LOG.info("Running mind control");
 		mindControl.run();
 		
-		LOG.info("Running freedom");
-		freedom.run();
+		turnOffOnMachine.run();
+		
+		if(turnedOffControlControls)
+		{
+			LOG.info("Running freedom");
+			freedom.run();
+		}
+		else
+		{
+			LOG.info("Death");
+			death.run();
+		}
+		
+		postshow.run();
 		
 		stopLightingLoop();
 	}

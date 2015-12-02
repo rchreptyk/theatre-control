@@ -22,7 +22,7 @@ public class MindControl extends StanleyScene {
 		TimelineBuilder builder = new TimelineBuilder();
 		
 		/* Sound */
-		View soundView = soundViewFactory.createSoundView(sounds.hatchOpening, 70);
+		View soundView = soundViewFactory.createSoundView(sounds.hatchOpening, 80);
 		Event hatchOpenEvent = new ViewShowEvent(soundView, Duration.ofSeconds(24));
 		builder.addEvent(hatchOpenEvent, Duration.ZERO);
 		
@@ -45,7 +45,7 @@ public class MindControl extends StanleyScene {
 		Event controls = narrationSeq.addAudio(sounds.controls1, Duration.ofSeconds(9));
 		narrationSeq.addAudio(sounds.controls2, Duration.ofSeconds(6));
 		narrationSeq.addAudio(sounds.controls3, Duration.ofSeconds(11));
-		narrationSeq.addAudio(sounds.controls4, Duration.ofSeconds(6));
+		Event lastAudio = narrationSeq.addAudio(sounds.controls4, Duration.ofSeconds(6));
 		
 		/* Music */
 		
@@ -88,9 +88,11 @@ public class MindControl extends StanleyScene {
 		
 		/* Lights */
 		Duration fadeLightTime = Duration.ofSeconds(5);
-		LightingView view = new LightingView(lightingLoop, fadeLightTime);
-		view.addChange(new IntensityChange(lights.area2Top, 60));
+		LightingView view = lightingViews.getTopDown(fadeLightTime);
 		builder.addEventWith(new ViewShowEvent(view, fadeLightTime), lightsRose);
+		
+		LightingView blackout = lightingViews.getTopDownBlack(Duration.ZERO);
+		builder.addEventWith(new ViewShowEvent(blackout, Duration.ZERO), lastAudio);
 		
 		Timeline timeline = builder.buildTimeline();
 		TimelineView timelineView = new TimelineView(timeline);

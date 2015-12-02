@@ -27,12 +27,17 @@ def process_line(line):
         print "Expected {} to be of length {} but was {}".format(line, expected_line_length, len(line))
         return True
 
+    print(line)
+
     position = 0;
     for x in range(DMX_UNIVERSE_SIZE):
-        dmx_data[x] = int(line[position:position+4])
+        myInt = int(line[position:position+4])
+        if(myInt > DMX_MAX_SLOT_VALUE):
+            print "Overflow!!"
+            myInt = DMX_MAX_SLOT_VALUE
+        dmx_data[x] = myInt
         position += 4
 
-    print(dmx_data)
     client.SendDmx(UNIVERSE, dmx_data)
     return True
 
@@ -57,7 +62,16 @@ def start_server():
         s.close()
         reader.close()
    
-    
+print("Bringing up house")
+empty = array('B', [DMX_MIN_SLOT_VALUE] * DMX_UNIVERSE_SIZE)
+empty[106] = DMX_MAX_SLOT_VALUE
+empty[107] = DMX_MAX_SLOT_VALUE
+client.SendDmx(UNIVERSE, empty)
+
+print("Can you see the house?")
+if not raw_input("y/n").startswith('y'):
+    print("Aborting")
+    exit(0)
 
 try:
     start_server()
