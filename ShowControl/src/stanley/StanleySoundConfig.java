@@ -109,4 +109,48 @@ public class StanleySoundConfig {
 	public Sound loungeExit = new FileSound("lounge_exit", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/2 Lounge_exit_delay_00.wav");
 
 	public Sound decisionMusic = new FileSound("decision", "/Users/russell/Desktop/Workspace/stanely/music/raw/Hammock - Glossolalia.mp3");
+	
+	public Sound phone1 = new FileSound("phone1", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/3. Phone/CargoLift_1_00.wav");
+	public Sound phone2 = new FileSound("phone2", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/3. Phone/CargoLift_2_00.wav");
+	public Sound phone3 = new FileSound("phone3", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/3. Phone/CargoLift_2_01.wav");
+	public Sound phone4 = new FileSound("phone4", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/3. Phone/CargoLift_2_02.wav");
+	public Sound phone5 = new FileSound("phone5", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/3. Phone/CargoLift_2_03.wav");
+	public Sound phone6 = new FileSound("phone5", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/3. Phone/CargoLift_3_00.wav");
+	public Sound phone7 = new FileSound("phone6", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/3. Phone/CargoLift_3_01.wav");
+	
+	public Sound phoneCallTaunt = new FileSound("phoneCallTaunt", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/3. Phone/Phone_00.wav");
+	
+	public Sound appt1 = new FileSound("appt1", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_1_00.wav");
+	public Sound appt2 = new FileSound("appt2", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_1_01.wav");
+	public Sound appt3 = new FileSound("appt3", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_1_02.wav");
+	public Sound appt4 = new FileSound("appt4", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_1_03.wav");
+	public Sound appt5 = new FileSound("appt5", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_2_00.wav");
+	public Sound appt6 = new FileSound("appt6", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_3_00.wav");
+	public Sound appt7 = new FileSound("appt7", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_4_00.wav");
+	public Sound appt8 = new FileSound("appt8", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_4_01.wav");
+	public Sound appt9 = new FileSound("appt9", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_5_00.wav");
+	public Sound appt10 = new FileSound("appt10", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_5_01.wav");
+	public Sound appt11 = new FileSound("appt11", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_5_02.wav");
+	public Sound appt12 = new FileSound("appt12", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_6_00.wav");
+	public Sound appt13 = new FileSound("appt13", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_6_01.wav");
+	public Sound appt14 = new FileSound("appt14", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_7_00.wav");
+	public Sound appt15 = new FileSound("appt15", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_7_01.wav");
+	public Sound appt16 = new FileSound("appt16", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_8_00.wav");
+	public Sound appt17 = new FileSound("appt17", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_8_01.wav");
+	public Sound appt18 = new FileSound("appt18", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_8_02.wav");
+	public Sound appt19 = new FileSound("appt19", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_9_00.wav");
+	public Sound appt20 = new FileSound("appt20", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_9_01.wav");
+	public Sound appt21 = new FileSound("appt21", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_10_00.wav");
+	public Sound appt22 = new FileSound("appt22", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_10_01.wav");
+	public Sound appt23 = new FileSound("appt23", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_11_00.wav");
+	public Sound appt24 = new FileSound("appt24", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_11_01.wav");
+	public Sound appt25 = new FileSound("appt25", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_12_00.wav");
+	public Sound appt26 = new FileSound("appt26", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_12_01.wav");
+	public Sound appt27 = new FileSound("appt27", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_13_00.wav");
+	public Sound appt28 = new FileSound("appt28", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_13_01.wav");
+	public Sound appt29 = new FileSound("appt29", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_13_02.wav");
+	public Sound appt30 = new FileSound("appt30", "/Users/russell/Desktop/Workspace/stanely/narrations/Right Path/4. Appartment/Apartment_14_00.wav");
+	
+	public Sound phoneRing = new FileSound("phoneRing", "/Users/russell/Desktop/Workspace/stanely/sound/phone/FX_PhoneRing.wav");
+	
 }

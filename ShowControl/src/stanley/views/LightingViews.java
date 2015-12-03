@@ -45,9 +45,23 @@ public class LightingViews {
 		return officeView;
 	}
 	
+	public LightingView getOfficeViewToTopDown(Duration fade)
+	{
+		LightingView officeView = new LightingView(loop, fade);
+		officeView.addChange(new IntensityChange(lights.area2Top, 60));
+		
+		officeView.addChange(new IntensityChange(lights.secondTop, 0));
+		officeView.addChange(new IntensityChange(lights.area2Front, 0));
+		officeView.addChange(new IntensityChange(lights.area3Top, 0));
+		officeView.addChange(new IntensityChange(lights.area1Top, 0));
+		
+		return officeView;
+	}
+	
 	public LightingView getOfficeViewBlack(Duration fade)
 	{
 		LightingView officeView = new LightingView(loop, fade);
+		officeView.addChange(new IntensityChange(lights.area2Top, 0));
 		officeView.addChange(new IntensityChange(lights.secondTop, 0));
 		officeView.addChange(new IntensityChange(lights.area2Front, 0));
 		officeView.addChange(new IntensityChange(lights.area3Top, 0));

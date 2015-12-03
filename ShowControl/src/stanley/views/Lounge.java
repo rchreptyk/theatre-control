@@ -5,6 +5,7 @@ import java.time.Duration;
 import controls.Event;
 import controls.View;
 import controls.ViewShowEvent;
+import controls.WaitEvent;
 import controls.timeline.Timeline;
 import controls.timeline.TimelineBuilder;
 import controls.timeline.TimelineSequence;
@@ -21,13 +22,20 @@ public class Lounge extends StanleyScene {
 		
 		TimelineBuilder builder = new TimelineBuilder();
 		
+		View notCorrectWay = soundViewFactory.createSoundView(sounds.twodoorsRight, Volumes.NARRATION_VOLUME);
+		Event notCorrectEvent = new ViewShowEvent(notCorrectWay, Duration.ofSeconds(9));
+		builder.addEvent(notCorrectEvent, Duration.ZERO);
+		
+		Event waitEvent = new WaitEvent(Duration.ofSeconds(2));
+		builder.addEventAfterEvent(waitEvent, notCorrectEvent);
+		
 		Duration officeFadeIn = Duration.ofSeconds(5);
 		LightingView officeIn = lightingViews.getOfficeView(officeFadeIn);
 		builder.addEvent(new ViewShowEvent(officeIn, officeFadeIn), Duration.ZERO);
 		
-		TimelineSequence narrTimelineSequence = builder.addTimelineSequence();
+		TimelineSequence narrTimelineSequence = builder.addTimelineSequence(waitEvent);
 		AudioSequence narrAudioSequence = new AudioSequence(narrTimelineSequence, soundViewFactory, sounds.NARRATION_VOLUME);
-		narrAudioSequence.addAudio(sounds.lounge1, Duration.ofSeconds(11));
+		narrAudioSequence.addAudio(sounds.lounge1, Duration.ofSeconds(11), Duration.ofSeconds(3));
 		narrAudioSequence.addAudio(sounds.lounge2, Duration.ofSeconds(6));
 		narrAudioSequence.addAudio(sounds.lounge3, Duration.ofSeconds(8));
 		narrAudioSequence.addAudio(sounds.lounge4, Duration.ofSeconds(11));
@@ -36,7 +44,7 @@ public class Lounge extends StanleyScene {
 		Event lastAudio = narrAudioSequence.addAudio(sounds.loungeExit, Duration.ofSeconds(6), Duration.ofSeconds(5));
 		
 		View musicView = soundViewFactory.createSoundView(sounds.lounge_music, Volumes.MUSIC_VOLUME);
-		builder.addEvent(new ViewShowEvent(musicView, Duration.ofSeconds(40)), Duration.ZERO);
+		builder.addEventAfterEvent(new ViewShowEvent(musicView, Duration.ofSeconds(40)), waitEvent);
 		
 		Duration officeFadeOut = Duration.ofSeconds(5);
 		View musicFadeout = soundViewFactory.createFade(sounds.lounge_music, Volumes.MUSIC_VOLUME, 0, Duration.ofSeconds(5));
@@ -46,9 +54,9 @@ public class Lounge extends StanleyScene {
 		View middleLounge = screenViewFactory.createScreenView(middleScreen, media.loungeMiddle);
 		View rightLounge = screenViewFactory.createScreenView(rightScreen, media.loungeRight);
 		
-		builder.addEvent(new ViewShowEvent(leftLounge, Duration.ZERO), Duration.ZERO);
-		builder.addEvent(new ViewShowEvent(middleLounge, Duration.ZERO), Duration.ZERO);
-		builder.addEvent(new ViewShowEvent(rightLounge, Duration.ZERO), Duration.ZERO);
+		builder.addEventAfterEvent(new ViewShowEvent(leftLounge, Duration.ZERO),waitEvent);
+		builder.addEventAfterEvent(new ViewShowEvent(middleLounge, Duration.ZERO), waitEvent);
+		builder.addEventAfterEvent(new ViewShowEvent(rightLounge, Duration.ZERO), waitEvent);
 		
 		LightingView officeOff = lightingViews.getOfficeViewBlack(officeFadeOut);
 		builder.addEventAfterEvent(new ViewShowEvent(officeOff, officeFadeOut), lastAudio);

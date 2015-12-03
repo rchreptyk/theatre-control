@@ -10,7 +10,6 @@ import controls.timeline.TimelineBuilder;
 import controls.timeline.TimelineSequence;
 import controls.timeline.TimelineView;
 import lighting.LightingView;
-import lighting.change.IntensityChange;
 import media.sound.AudioSequence;
 import stanley.StanleyInterfaces;
 import stanley.Volumes;

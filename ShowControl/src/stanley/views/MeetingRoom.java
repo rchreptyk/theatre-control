@@ -2,6 +2,7 @@ package stanley.views;
 
 import java.time.Duration;
 
+import controls.Event;
 import controls.View;
 import controls.ViewShowEvent;
 import controls.timeline.Timeline;
@@ -20,8 +21,14 @@ public class MeetingRoom extends StanleyScene{
 		
 		TimelineBuilder builder = new TimelineBuilder();
 		
+		/* Lighting */
+		Duration fadeLightTime = Duration.ofSeconds(5);
+		LightingView officeView = lightingViews.getOfficeView(fadeLightTime);
+		Event officeViewEvent = new ViewShowEvent(officeView, fadeLightTime.plus(Duration.ofSeconds(3)));
+		builder.addEvent(officeViewEvent, Duration.ZERO);
+		
 		/* Audio */
-		TimelineSequence audioTimelineSequence = builder.addTimelineSequence();
+		TimelineSequence audioTimelineSequence = builder.addTimelineSequence(fadeLightTime);
 		AudioSequence audioSequence = new AudioSequence(audioTimelineSequence, soundViewFactory, sounds.NARRATION_VOLUME);
 		audioSequence.addAudio(sounds.meetingRoom1, Duration.ofSeconds(3), Duration.ofSeconds(7));
 		audioSequence.addAudio(sounds.meetingRoom2, Duration.ofSeconds(5));
@@ -29,11 +36,11 @@ public class MeetingRoom extends StanleyScene{
 		/* Slides */
 		Duration slideDuration = Duration.ofSeconds(5);
 		
-		TimelineSequence clickerNoiseSequence = builder.addTimelineSequence();
+		TimelineSequence clickerNoiseSequence = builder.addTimelineSequence(fadeLightTime);
 		AudioSequence clickerNoises = new AudioSequence(clickerNoiseSequence, soundViewFactory, 30);
 		
-		TimelineSequence leftMediaSequence = builder.addTimelineSequence();
-		TimelineSequence rightMediaSequence = builder.addTimelineSequence();
+		TimelineSequence leftMediaSequence = builder.addTimelineSequence(fadeLightTime);
+		TimelineSequence rightMediaSequence = builder.addTimelineSequence(fadeLightTime);
 		
 		UniqueSound clickerSound = new UniqueSound(sounds.meetingRoomClicker);
 		
@@ -51,12 +58,7 @@ public class MeetingRoom extends StanleyScene{
 		
 		/* Media */
 		View meetingRoomMiddle = screenViewFactory.createScreenView(middleScreen, media.meetingRoom);
-		builder.addEvent(new ViewShowEvent(meetingRoomMiddle, Duration.ofSeconds(5)), Duration.ZERO);
-		
-		/* Lighting */
-		Duration fadeLightTime = Duration.ofSeconds(5);
-		LightingView officeView = lightingViews.getOfficeView(fadeLightTime);
-		builder.addEvent(new ViewShowEvent(officeView, fadeLightTime), Duration.ZERO);
+		builder.addEventAfterEvent(new ViewShowEvent(meetingRoomMiddle, Duration.ofSeconds(5)), officeViewEvent);
 		
 		Timeline timeline = builder.buildTimeline();
 		TimelineView timelineView = new TimelineView(timeline);

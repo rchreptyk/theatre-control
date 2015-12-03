@@ -2,7 +2,6 @@ package stanley.views;
 
 import java.time.Duration;
 
-import controls.Event;
 import controls.View;
 import controls.ViewShowEvent;
 import controls.timeline.Timeline;
@@ -86,7 +85,7 @@ public class Death extends StanleyScene {
 		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.rightIQX, 34)), currentTime);
 		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.rightIQY, 0)), currentTime);
 		
-		for(int i = 0; i < (34000 / 500) - 1; i += 1)
+		for(int i = 0; i < (34000 / 500) - 2; i += 1)
 		{
 			CompoundLightingChange lightingChange = new CompoundLightingChange();
 			
@@ -114,8 +113,10 @@ public class Death extends StanleyScene {
 			currentTime = currentTime.plusMillis(500);
 		}
 		
-		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.leftIQ, 0)), terminateTime);
-		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.rightIQ, 0)), terminateTime);
+		Duration lightingKill = terminateTime.minusMillis(500);
+		
+		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.leftIQ, 0)), lightingKill);
+		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.rightIQ, 0)), lightingKill);
 		
 		CompoundLightingChange lightsOff = new CompoundLightingChange();
 		
@@ -125,8 +126,8 @@ public class Death extends StanleyScene {
 		for(BasicLight light : flashing2)
 			lightsOff.add(new IntensityChange(light, 0));
 		
-		builder.addEvent(new LightingChangeEvent(lightsOff), terminateTime);
-		builder.addEvent(new LightingLoopUpdateEvent(lightingLoop), terminateTime.plusMillis(1));
+		builder.addEvent(new LightingChangeEvent(lightsOff), lightingKill);
+		builder.addEvent(new LightingLoopUpdateEvent(lightingLoop), lightingKill.plusMillis(1));
 		
 		Timeline timeline = builder.buildTimeline();
 		TimelineView timelineView = new TimelineView(timeline);

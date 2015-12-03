@@ -6,8 +6,6 @@ import controls.View;
 import controls.ViewShowEvent;
 import controls.WaitEvent;
 import lighting.LightingView;
-import lighting.intruments.colorfusion.ColorFusionColor;
-import lighting.intruments.colorfusion.ColorFusionColorChange;
 import stanley.StanleyInterfaces;
 
 public class Preshow extends StanleyScene{

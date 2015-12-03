@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.time.Duration;
 import java.util.logging.Logger;
 
 import controls.Sequence;
@@ -14,6 +15,7 @@ import media.MessageTransmitter;
 import media.screens.Screen;
 import media.screens.ScreenViewFactory;
 import media.sound.SoundViewFactory;
+import stanley.views.Appartment;
 import stanley.views.Bosses;
 import stanley.views.Death;
 import stanley.views.DecisionPoint;
@@ -76,56 +78,71 @@ public class StanleyParable implements AutoCloseable{
 		Bosses bosses = new Bosses(interfaces);
 		MindControl mindControl = new MindControl(interfaces);
 		Freedom freedom = new Freedom(interfaces);
+		Appartment appartment = new Appartment(interfaces);
 		Death death = new Death(interfaces);
 		PostShow postshow = new PostShow(interfaces);
 		
-		DecisionPoint twoDoors = new DecisionPoint("Two Doors", interfaces);
-		DecisionPoint turnOffOnMachine = new DecisionPoint("On Off Machine", interfaces);
-		DecisionPoint straightOrLeft = new DecisionPoint("On Off Machine", interfaces);
+		DecisionMaker twoDoorsDecider = new MockDecisionMaker("right", Duration.ofSeconds(30)); //left/right
+		DecisionMaker turnOffOnMachineDecider = new MockDecisionMaker("on", Duration.ofSeconds(30)); //on/off
+		DecisionMaker straightOfLeftDecider = new MockDecisionMaker("left", Duration.ofSeconds(30)); //left/straight
 		
-		boolean doLounge = true;
-		boolean turnedOffControlControls = true;
+		DecisionPoint twoDoors = new DecisionPoint("Two Doors", twoDoorsDecider, interfaces);
+		DecisionPoint turnOffOnMachine = new DecisionPoint("On Off Machine", turnOffOnMachineDecider, interfaces);
+		DecisionPoint straightOrLeft = new DecisionPoint("Straight of Left", straightOfLeftDecider, interfaces);
+		
+		boolean goToAppartment = false;
 		
 		LOG.info("Preshow");
 		preshow.run();
-		
+	
 		LOG.info("Running intro");
 		intro.run();
 		
 		LOG.info("Running office");
 		office.run();
 		
-		LOG.info("Decision");
+		LOG.info("Two Doors");
 		twoDoors.run();
 		
-		if(doLounge)
+		if(twoDoors.getResult().equals("right"))
 		{
 			LOG.info("Running lounge");
 			lounge.run();
 			
+			LOG.info("Straight or left");
 			straightOrLeft.run();
+			
+			goToAppartment = straightOrLeft.getResult().equals("straight");
 		}
 		
-		LOG.info("Running meeting");
-		meeting.run();
-		
-		LOG.info("Running bosses");
-		bosses.run();
-		
-		LOG.info("Running mind control");
-		mindControl.run();
-		
-		turnOffOnMachine.run();
-		
-		if(turnedOffControlControls)
+		if(goToAppartment)
 		{
-			LOG.info("Running freedom");
-			freedom.run();
+			LOG.info("Appartment scene");
+			appartment.run();
 		}
 		else
 		{
-			LOG.info("Death");
-			death.run();
+			LOG.info("Running meeting");
+			meeting.run();
+			
+			LOG.info("Running bosses");
+			bosses.run();
+			
+			LOG.info("Running mind control");
+			mindControl.run();
+			
+			turnOffOnMachine.run();
+			
+			if(turnOffOnMachine.getResult().equals("off"))
+			{
+				LOG.info("Running freedom");
+				freedom.run();
+			}
+			else
+			{
+				LOG.info("Death");
+				death.run();
+			}
 		}
 		
 		postshow.run();
