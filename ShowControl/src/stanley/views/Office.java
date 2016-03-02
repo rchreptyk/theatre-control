@@ -78,9 +78,9 @@ public class Office extends StanleyScene {
 		/* Lighting */
 		
 		// Office View
-		Duration fadeLightTime = Duration.ofSeconds(10);
+		Duration fadeLightTime = Duration.ofSeconds(20);
 		LightingView officeView = lightingViews.getOfficeView(fadeLightTime);
-		builder.addEventWith(new ViewShowEvent(officeView, fadeLightTime), noOrders);
+		builder.addEvent(new ViewShowEvent(officeView, fadeLightTime), Duration.ofSeconds(0));
 		
 		//House light
 		Duration sideFadeTime = Duration.ofMillis(500);

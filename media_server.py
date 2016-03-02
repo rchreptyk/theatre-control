@@ -55,7 +55,12 @@ class MediaServer(object):
         print("Stopping server")
 
     def process_request(self, request):
+
         request_type, space, request  = request.partition(' ')
+        
+        if(request_type == 'text'):
+            self.show_text(request)
+            return
 
         if(space == '' or request == ''):
             return
@@ -66,6 +71,9 @@ class MediaServer(object):
             self.process_sound(request)
         else:
             print("Invalid command " + request_type)
+
+    def show_text(self, text):
+        self.screen_dict['center'].overlay(text)
 
     def process_screen(self, request):
         screen_name, space, request  = request.partition(' ')

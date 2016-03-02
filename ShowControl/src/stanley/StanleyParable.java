@@ -1,11 +1,14 @@
 package stanley;
 
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.time.Duration;
+import java.util.HashSet;
 import java.util.logging.Logger;
 
 import controls.Sequence;
@@ -69,7 +72,34 @@ public class StanleyParable implements AutoCloseable{
 	{
 		startLightingLoop();
 		
-//		TestSequence testSequence = new TestSequence(interfaces);
+		WebPuller puller = new WebPuller("http://russellc.ca");
+		TextUpdater updater = new TextUpdater(mediaTransmitter);
+		
+		try {
+			puller.startShow();
+		} catch (IOException e) {
+			LOG.info("Unable to start the show on the server");
+			e.printStackTrace();
+			return;
+		}
+		
+		TestSequence testSequence = new TestSequence(interfaces);
+		
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		try {
+			System.out.println("Test Sequence? ");
+			if(reader.readLine().equals("y"))
+			{
+				testSequence.run();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new RuntimeException("Did not confirm");
+		}
+		
+		
+		
 		Preshow preshow = new Preshow(interfaces);
 		Introduction intro = new Introduction(interfaces);
 		Office office = new Office(interfaces);
@@ -78,17 +108,28 @@ public class StanleyParable implements AutoCloseable{
 		Bosses bosses = new Bosses(interfaces);
 		MindControl mindControl = new MindControl(interfaces);
 		Freedom freedom = new Freedom(interfaces);
-		Appartment appartment = new Appartment(interfaces);
+		Appartment appartment = new Appartment(puller, updater, interfaces);
 		Death death = new Death(interfaces);
 		PostShow postshow = new PostShow(interfaces);
 		
-		DecisionMaker twoDoorsDecider = new MockDecisionMaker("right", Duration.ofSeconds(30)); //left/right
-		DecisionMaker turnOffOnMachineDecider = new MockDecisionMaker("on", Duration.ofSeconds(30)); //on/off
-		DecisionMaker straightOfLeftDecider = new MockDecisionMaker("left", Duration.ofSeconds(30)); //left/straight
+		HashSet<String> twoDoorDecisions = new HashSet<String>();
+		twoDoorDecisions.add("left");
+		twoDoorDecisions.add("right");
+		DecisionMaker twoDoorsDecider = new WebDecisionMaker(puller, updater, twoDoorDecisions, "left"); //left/right
+		
+		HashSet<String> onOffDecisions = new HashSet<String>();
+		onOffDecisions.add("off");
+		onOffDecisions.add("on");
+		DecisionMaker turnOffOnMachineDecider = new WebDecisionMaker(puller, updater, onOffDecisions, "on"); //on/off
+		
+		HashSet<String> straightLeftDecisions = new HashSet<String>();
+		straightLeftDecisions.add("left");
+		straightLeftDecisions.add("straight");
+		DecisionMaker straightLeftDecision = new WebDecisionMaker(puller, updater, straightLeftDecisions, "on"); //on/off
 		
 		DecisionPoint twoDoors = new DecisionPoint("Two Doors", twoDoorsDecider, interfaces);
 		DecisionPoint turnOffOnMachine = new DecisionPoint("On Off Machine", turnOffOnMachineDecider, interfaces);
-		DecisionPoint straightOrLeft = new DecisionPoint("Straight of Left", straightOfLeftDecider, interfaces);
+		DecisionPoint straightOrLeft = new DecisionPoint("Straight of Left", straightLeftDecision, interfaces);
 		
 		boolean goToAppartment = false;
 		

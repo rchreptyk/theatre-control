@@ -3,6 +3,8 @@ package stanley;
 import media.screens.FileVideo;
 
 public class StanleyMediaConfig {
+	public FileVideo phoneScene = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/intro/intro.mp4");
+	
 	public FileVideo pictureOfStanley = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/me/me.jpg");
 	
 	public FileVideo bigBuilding = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/big_building.jpg");
@@ -51,6 +53,12 @@ public class StanleyMediaConfig {
 	
 	public FileVideo landscapes = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/landscapes.mp4");
 	public FileVideo death = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/death/34seconds.mp4");
+	
+	public FileVideo decision = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/decisionb.mp4");
+	
+	public FileVideo stanleyParable = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/appartment/StanleyParable.png");
+	
+	public FileVideo testKitten = new FileVideo("/Users/russell/Desktop/Workspace/stanely/media/test_cat.jpg");
 	
 	public FileVideo[] slides = new FileVideo[7];
 	

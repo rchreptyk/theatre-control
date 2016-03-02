@@ -6,6 +6,9 @@ import media.sound.Sound;
 public class StanleySoundConfig {
 	public final int NARRATION_VOLUME = Volumes.NARRATION_VOLUME;
 	
+	public Sound testSequenceMusic1 = new FileSound("testSequenceM1", "/Users/russell/Desktop/Workspace/stanely/music/testMusic.flac");
+	public Sound introMusic = new FileSound("introPhoneMusic", "/Users/russell/Desktop/Workspace/stanely/music/raw/Orchestra Tuning - Warm Up - Clean Sound.mp3");
+	
 	public Sound intro1 = new FileSound("Intro1", "/Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_1_00.wav");
 	public Sound intro2 = new FileSound("Intro2", "/Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_1_01.wav");
 	public Sound intro3 = new FileSound("Intro3", "/Users/russell/Desktop/Workspace/stanely/narrations/1Introduction/Intro_1_02.wav");
@@ -91,6 +94,7 @@ public class StanleySoundConfig {
 	public Sound death6 = new FileSound("death6", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_05.wav");
 	public Sound death7 = new FileSound("death7", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_34_seconds.wav");
 	public Sound deathMusic = new FileSound("deathMusic", "/Users/russell/Desktop/Workspace/stanely/music/death2.mov");
+	public Sound deathSound = new FileSound("deathSound", "/Users/russell/Desktop/Workspace/stanely/sound/death/explosion.wav");
 	
 	public Sound countdown1 = new FileSound("countdown1", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_31.wav");
 	public Sound countdown2 = new FileSound("countdown2", "/Users/russell/Desktop/Workspace/stanely/narrations/Left Path/TurnOnMindControl/Countdown_32.wav");

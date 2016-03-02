@@ -1,9 +1,7 @@
 package stanley;
 
 import lighting.intruments.BasicLight;
-import lighting.intruments.BasicScroller;
 import lighting.intruments.LightingConfiguration;
-import lighting.intruments.colorfusion.ColorFusionLight;
 
 public class StanleyLightingConfig extends LightingConfiguration{
 	
@@ -38,6 +36,9 @@ public class StanleyLightingConfig extends LightingConfiguration{
 	public BasicLight redTopLight = addBasicLight("Red top light", 67);
 	public BasicLight leftOrangeLight = addBasicLight("Left orange light", 82);
 	public BasicLight frontOrangeLight = addBasicLight("Front orange light", 20);
+	public BasicLight audienceBlinderFarLeft = addBasicLight("Audience blinder far left", 44);
+	public BasicLight audienceBlinderMiddle = addBasicLight("Audience blinder far middle", 57);
+	public BasicLight audienceBlinderFarRight = addBasicLight("Audience blinder far right", 69);
 	
 	//IQs
 	public BasicLight leftIQ = addBasicLight("Left IQ intensity", 9);
@@ -81,13 +82,13 @@ public class StanleyLightingConfig extends LightingConfiguration{
 	
 	//public BasicLight rightWork = addBasicLight("Red Top", 97); //bleeds onto left screen
 	
-	public ColorFusionLight leftScroller = addColorFusionLight(new BasicLight("Left Scroller", 42),
-			new BasicScroller("Position 1", 160, 1),
-			new BasicScroller("Position 2", 160, 2));
-	
-	public ColorFusionLight rightScroller = addColorFusionLight(new BasicLight("Right Scroller", 53),
-			new BasicScroller("Position 1", 160, 15),
-			new BasicScroller("Position 2", 160, 16));
+//	public ColorFusionLight leftScroller = addColorFusionLight(new BasicLight("Left Scroller", 42),
+//			new BasicScroller("Position 1", 160, 1),
+//			new BasicScroller("Position 2", 160, 2));
+//	
+//	public ColorFusionLight rightScroller = addColorFusionLight(new BasicLight("Right Scroller", 53),
+//			new BasicScroller("Position 1", 160, 15),
+//			new BasicScroller("Position 2", 160, 16));
 	
 	//Aqua blue
 	//Royal purple
@@ -102,7 +103,4 @@ public class StanleyLightingConfig extends LightingConfiguration{
 	//42 left scroller intensity
 	//(160 + 0) 160
 	//(160 + 1) 161
-	
-	public BasicLight warmBackLeft = addBasicLight("Warm back left", 3);
-	public BasicLight warmBackRight = addBasicLight("Warm back right", 4);
 }

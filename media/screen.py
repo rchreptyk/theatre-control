@@ -30,8 +30,10 @@ class ScreenWindow(QtGui.QFrame):
 class Screen(object):
     """Create a screen for the display"""
     def __init__(self, application, screenName, defaultImage, x = 500, y = 500):
-        self.vlc = vlc.Instance('--no-audio', '--fullscreen')
+        self.vlc = vlc.Instance('--no-audio', '--fullscreen', '--sub-source=marq')
         self.player = self.vlc.media_player_new()
+        self.player.video_set_marquee_int(vlc.VideoMarqueeOption.marquee_X, 500)
+        self.player.video_set_marquee_int(vlc.VideoMarqueeOption.marquee_Y, 200)
 
         self.screenName = screenName
         self.frame = ScreenWindow(self.player)
@@ -50,9 +52,27 @@ class Screen(object):
         media = self.vlc.media_new(defaultImage)
         self.player.set_media(media)
         self.player.play()
+
+    def overlay(self, text):
+       
+        print("Setting string to \"" + text + "\"")
+
+        if(not text):
+            print("String is empty")
+            self.player.video_set_marquee_string(vlc.VideoMarqueeOption.Text, " ")
+            self.player.video_set_marquee_int(vlc.VideoMarqueeOption.Enable, 0)
+        else:
+            print("Setting text")
+            self.player.video_set_marquee_string(vlc.VideoMarqueeOption.Text, text.replace("|", "\n"))
+            self.player.video_set_marquee_int(vlc.VideoMarqueeOption.Enable, 1)
+        
+        # self.player.video_set_marquee_string(vlc.VideoMarqueeOption.Text, text)
+        # # refresh gaze location every 10 ms at most
+        # self.player.video_set_marquee_int(vlc.VideoMarqueeOption.Timeout,
+        #                              int(2.5 * 41))
         
     def play_video(self, video):
-        media = self.vlc.media_new(video)
+        media = self.vlc.media_new(video, "--sub-filter=marq")
         self.player.set_media(media)
         self.player.play()
 

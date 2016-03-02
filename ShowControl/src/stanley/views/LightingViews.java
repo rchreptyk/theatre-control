@@ -134,6 +134,70 @@ public class LightingViews {
 		return officeView;
 	}
 	
+	public LightingView getTestView(Duration fade)
+	{
+		LightingView officeView = new LightingView(loop, fade);
+		officeView.addChange(new IntensityChange(lights.area2Top, 80));
+		officeView.addChange(new IntensityChange(lights.secondTop, 80));
+		officeView.addChange(new IntensityChange(lights.area2Front, 80));
+		officeView.addChange(new IntensityChange(lights.area3Top, 80));
+		officeView.addChange(new IntensityChange(lights.area1Top, 80));
+		officeView.addChange(new IntensityChange(lights.rightWarmBack, 80));
+		officeView.addChange(new IntensityChange(lights.leftWarmBack, 80));
+		officeView.addChange(new IntensityChange(lights.rightWarmSide, 80));
+		officeView.addChange(new IntensityChange(lights.rightPainting, 80));
+		officeView.addChange(new IntensityChange(lights.middlePainting, 80));
+		officeView.addChange(new IntensityChange(lights.leftPainting, 80));
+		officeView.addChange(new IntensityChange(lights.area2Left45, 80));
+		officeView.addChange(new IntensityChange(lights.area2Right45, 80));
+		officeView.addChange(new IntensityChange(lights.backHallLightLeft, 80));
+		officeView.addChange(new IntensityChange(lights.backHallLightRight, 80));
+		officeView.addChange(new IntensityChange(lights.redTopLight, 80));
+		officeView.addChange(new IntensityChange(lights.leftOrangeLight, 80));
+		officeView.addChange(new IntensityChange(lights.frontOrangeLight, 80));
+		
+		officeView.addChange(new IntensityChange(lights.leftIQ, 80));
+		officeView.addChange(new IntensityChange(lights.leftIQY, 45));
+		officeView.addChange(new IntensityChange(lights.leftIQX, 45));
+		officeView.addChange(new IntensityChange(lights.rightIQ, 80));
+		officeView.addChange(new IntensityChange(lights.rightIQY, 45));
+		officeView.addChange(new IntensityChange(lights.rightIQX, 45));
+
+		return officeView;
+	}
+	
+	public LightingView getTestViewOff(Duration fade)
+	{
+		LightingView officeView = new LightingView(loop, fade);
+		officeView.addChange(new IntensityChange(lights.area2Top, 0));
+		officeView.addChange(new IntensityChange(lights.secondTop, 0));
+		officeView.addChange(new IntensityChange(lights.area2Front, 0));
+		officeView.addChange(new IntensityChange(lights.area3Top, 0));
+		officeView.addChange(new IntensityChange(lights.area1Top, 0));
+		officeView.addChange(new IntensityChange(lights.rightWarmBack, 0));
+		officeView.addChange(new IntensityChange(lights.leftWarmBack, 0));
+		officeView.addChange(new IntensityChange(lights.rightWarmSide, 0));
+		officeView.addChange(new IntensityChange(lights.rightPainting, 0));
+		officeView.addChange(new IntensityChange(lights.middlePainting, 0));
+		officeView.addChange(new IntensityChange(lights.leftPainting, 0));
+		officeView.addChange(new IntensityChange(lights.area2Left45, 0));
+		officeView.addChange(new IntensityChange(lights.area2Right45, 0));
+		officeView.addChange(new IntensityChange(lights.backHallLightLeft, 0));
+		officeView.addChange(new IntensityChange(lights.backHallLightRight, 0));
+		officeView.addChange(new IntensityChange(lights.redTopLight, 0));
+		officeView.addChange(new IntensityChange(lights.leftOrangeLight, 0));
+		officeView.addChange(new IntensityChange(lights.frontOrangeLight, 0));
+		
+		officeView.addChange(new IntensityChange(lights.leftIQ, 0));
+		officeView.addChange(new IntensityChange(lights.leftIQY, 0));
+		officeView.addChange(new IntensityChange(lights.leftIQX, 0));
+		officeView.addChange(new IntensityChange(lights.rightIQ, 0));
+		officeView.addChange(new IntensityChange(lights.rightIQY, 0));
+		officeView.addChange(new IntensityChange(lights.rightIQX, 0));
+
+		return officeView;
+	}
+	
 	public LightingView getBossesOfficeViewOff(Duration fade)
 	{
 		LightingView officeView = new LightingView(loop, fade);

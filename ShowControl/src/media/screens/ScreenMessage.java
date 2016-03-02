@@ -40,6 +40,16 @@ public class ScreenMessage implements MediaMessage {
 		return new ScreenMessage(builder.toString());
 	}
 	
+	public static ScreenMessage showText(String text)
+	{
+		StringBuilder builder = new StringBuilder("text");
+		builder.append(" ");
+		
+		builder.append(text);
+			
+		return new ScreenMessage(builder.toString());
+	}
+	
 	
 	@Override
 	public String getMessage() {

@@ -46,6 +46,9 @@ public class Death extends StanleyScene {
 		View deathMusic = soundViewFactory.createSoundView(sounds.deathMusic, 45);
 		builder.addEvent(new ViewShowEvent(deathMusic, Duration.ofSeconds(34)), freakOutTime);
 		
+		View deathSound = soundViewFactory.createSoundView(sounds.deathSound, 55);
+		builder.addEvent(new ViewShowEvent(deathSound, Duration.ofSeconds(26)), terminateTime.minusSeconds(26));
+		
 		View deathCountdownLeft = screenViewFactory.createScreenView(leftScreen, media.death);
 		View deathCountdownMiddle = screenViewFactory.createScreenView(middleScreen, media.death);
 		View deathCountdownRight = screenViewFactory.createScreenView(rightScreen, media.death);
@@ -113,10 +116,16 @@ public class Death extends StanleyScene {
 			currentTime = currentTime.plusMillis(500);
 		}
 		
-		Duration lightingKill = terminateTime.minusMillis(500);
+		Duration lightingKillTime = terminateTime.minusMillis(500);
 		
-		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.leftIQ, 0)), lightingKill);
-		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.rightIQ, 0)), lightingKill);
+		Duration additionalBlinderTime = lightingKillTime.minusSeconds(2);
+		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.audienceBlinderFarLeft, 80)), additionalBlinderTime);
+		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.audienceBlinderMiddle, 80)), additionalBlinderTime);
+		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.audienceBlinderFarRight, 80)), additionalBlinderTime);
+		builder.addEvent(new LightingLoopUpdateEvent(lightingLoop), additionalBlinderTime.plusMillis(1));
+		
+		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.leftIQ, 0)), lightingKillTime);
+		builder.addEvent(new LightingChangeEvent(new IntensityChange(lights.rightIQ, 0)), lightingKillTime);
 		
 		CompoundLightingChange lightsOff = new CompoundLightingChange();
 		
@@ -126,8 +135,12 @@ public class Death extends StanleyScene {
 		for(BasicLight light : flashing2)
 			lightsOff.add(new IntensityChange(light, 0));
 		
-		builder.addEvent(new LightingChangeEvent(lightsOff), lightingKill);
-		builder.addEvent(new LightingLoopUpdateEvent(lightingLoop), lightingKill.plusMillis(1));
+		lightsOff.add(new IntensityChange(lights.audienceBlinderFarLeft, 0));
+		lightsOff.add(new IntensityChange(lights.audienceBlinderMiddle, 0));
+		lightsOff.add(new IntensityChange(lights.audienceBlinderFarRight, 0));
+		
+		builder.addEvent(new LightingChangeEvent(lightsOff), lightingKillTime);
+		builder.addEvent(new LightingLoopUpdateEvent(lightingLoop), lightingKillTime.plusMillis(1));
 		
 		Timeline timeline = builder.buildTimeline();
 		TimelineView timelineView = new TimelineView(timeline);
